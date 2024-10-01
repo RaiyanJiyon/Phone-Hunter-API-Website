@@ -1,0 +1,46 @@
+Project Name: Phone Hunter
+
+This project involves building a dynamic phone search website with a focus on creating an interactive user interface featuring detailed phone cards and related functionalities. The primary goal is to provide users with a seamless and professional experience when searching for and viewing phone details.
+
+Key Requirements:
+
+Meaningful Content: Use relevant content for all text elements instead of placeholder text like "lorem ipsum."
+Visual Appeal: You are free to adjust the design and color scheme, but ensure the website remains visually appealing, modern, and professional.
+No JavaScript Libraries or Frameworks: For this assignment, using external JavaScript libraries or frameworks is not allowed. Only vanilla JavaScript should be used.
+
+Design Specifications:
+
+Navbar:
+Structure:
+The left side should display the website title along with a logo.
+The right side should have a "Sign Up" button for user registration.
+
+Banner:
+Elements:
+A prominent banner with the website’s title and a brief description of its purpose.
+A "Buy Now" button.
+A phone cover image to enhance visual appeal.
+
+Main Section:
+
+Search Feature:
+Title: Display a relevant title for the search functionality.
+Search Bar: Include a search input field and a search button to filter the phone list based on user queries.
+
+Phone Cards:
+Dynamic Cards: Create phone cards that display the information retrieved from the provided API data.
+Phone Details: Each card should show key details such as the phone model, image, and a short description.
+
+Show All Button:
+If more than 12 phone cards are available, display a "Show All" button.
+When clicked, this button should load the remaining phone cards.
+If fewer than 12 cards are displayed, remove the "Show All" button.
+
+Loading Indicator:
+Display a loading animation while the data is being fetched, and ensure it disappears once the phone cards are loaded.
+
+Modal for More Details:
+Each phone card should have a button or clickable area that opens a modal with more in-depth information about the phone model.
+
+Responsive Design:
+Ensure the entire website is responsive and performs well on a variety of screen sizes, including desktop, tablet, and mobile devices.
