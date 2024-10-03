@@ -1,35 +1,39 @@
+// Function to load phone data from the API
 const loadPhone = async (searchText = 'iPhone', isShowAll) => {
+    // Fetch phone data based on search text
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
-    const phones = data.data;
-    displayPhone(phones, searchText, isShowAll);
+    const phones = data.data; // Extract phone data
+    displayPhone(phones, searchText, isShowAll); // Display the phones
 }
 
+// Function to display phone cards on the page
 const displayPhone = (phones, searchText, isShowAll) => {
-    const phoneCards = document.getElementById('phone-cards');
-    const noSearchMessage = document.getElementById('no-search-message');
-    const showAllContainer = document.getElementById('show-all-container');
+    const phoneCards = document.getElementById('phone-cards'); // Phone card container
+    const noSearchMessage = document.getElementById('no-search-message'); // No search message element
+    const showAllContainer = document.getElementById('show-all-container'); // Show All button container
 
-    phoneCards.textContent = '';
+    phoneCards.textContent = ''; // Clear previous phone cards
 
+    // Show "No Search Result" message if no phones are found
     if (phones.length === 0) {
-        noSearchMessage.classList.remove('hidden');
-        showAllContainer.classList.add('hidden');
-        toggleSpinner(false);
+        noSearchMessage.classList.remove('hidden'); // Display the no search message
+        showAllContainer.classList.add('hidden'); // Hide "Show All" button
+        toggleSpinner(false); // Stop the loading spinner
         return;
     }
 
-    noSearchMessage.classList.add('hidden');
+    noSearchMessage.classList.add('hidden'); // Hide the no search message
 
-
+    // If there are more than 12 phones and "Show All" is not clicked, show only 12
     if (phones.length > 12 && !isShowAll) {
-        showAllContainer.classList.remove('hidden');
-        phones = phones.slice(0, 12);
+        showAllContainer.classList.remove('hidden'); // Show "Show All" button
+        phones = phones.slice(0, 12); // Display only the first 12 phones
     } else {
-        showAllContainer.classList.add('hidden');
+        showAllContainer.classList.add('hidden'); // Hide "Show All" button if not needed
     }
 
-
+    // Create and display phone cards
     phones.forEach(phone => {
         const phoneCard = document.createElement('div');
         phoneCard.classList.add('card', 'border', 'border-[#CFCFCF]');
@@ -44,43 +48,45 @@ const displayPhone = (phones, searchText, isShowAll) => {
                 <p class="mt-5">
                     There are many variations of passages available, but the majority have suffered.
                 </p>
-                <h2 class="text-xl font-bold mt-3">
-                    $999
-                </h2>
+                <h2 class="text-xl font-bold mt-3">$999</h2>
                 <div class="card-actions mt-4">
                     <button onclick="openModal('${phone.slug}')" class="btn bg-primary-color text-white font-bold">Show Details</button>
                 </div>
             </div>
         `;
-        phoneCards.appendChild(phoneCard);
+        phoneCards.appendChild(phoneCard); // Append the card to the container
     });
 
-    toggleSpinner(false);
+    toggleSpinner(false); // Stop the loading spinner
 }
 
+// Function to handle search
 const handleSearch = (isShowAll) => {
-    toggleSpinner(true);
+    toggleSpinner(true); // Start loading spinner
     const searchInput = document.getElementById('search-input');
-    const searchText = searchInput.value || 'iPhone';
-    loadPhone(searchText, isShowAll);
+    const searchText = searchInput.value || 'iPhone'; // Get search input or default to 'iPhone'
+    loadPhone(searchText, isShowAll); // Load phone data based on search
 }
 
+// Function to toggle the loading spinner
 const toggleSpinner = (isToggle) => {
     const loadingSpinner = document.getElementById('loading-spinner');
     if (isToggle) {
-        loadingSpinner.classList.remove('hidden');
+        loadingSpinner.classList.remove('hidden'); // Show spinner
     } else {
-        loadingSpinner.classList.add('hidden');
+        loadingSpinner.classList.add('hidden'); // Hide spinner
     }
 }
 
+// Function to open a modal with phone details
 const openModal = async (id) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
     const data = await res.json();
-    const phone = data.data;
-    showPhoneDetails(phone);
+    const phone = data.data; // Extract phone details
+    showPhoneDetails(phone); // Show phone details in a modal
 }
 
+// Function to display phone details in a modal
 const showPhoneDetails = (phone) => {
     const showAllDetails = document.getElementById('my_modal_5');
     showAllDetails.innerHTML = `
@@ -128,12 +134,13 @@ const showPhoneDetails = (phone) => {
         </div>
     `;
 
-    my_modal_5.showModal();
+    my_modal_5.showModal(); // Show modal with phone details
 }
 
-
+// Function to handle "Show All" button click
 const showAll = () => {
-    handleSearch(true);
+    handleSearch(true); // Trigger search to show all phones
 }
 
+// Initial load of phones with default search text
 loadPhone();
