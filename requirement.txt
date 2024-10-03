@@ -12,14 +12,14 @@ Design Specifications:
 
 Navbar:
 Structure:
-The left side should display the website title along with a logo.
-The right side should have a "Sign Up" button for user registration.
+The left side should display the website title along with a logo. ✔️
+The right side should have a "Sign Up" button for user registration. ✔️
 
 Banner:
 Elements:
-A prominent banner with the website’s title and a brief description of its purpose.
-A "Buy Now" button.
-A phone cover image to enhance visual appeal.
+A prominent banner with the website’s title and a brief description of its purpose. ✔️
+A "Buy Now" button. ✔️
+A phone cover image to enhance visual appeal. ✔️
 
 Main Section:
 
