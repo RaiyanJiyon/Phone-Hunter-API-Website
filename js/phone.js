@@ -38,6 +38,8 @@ const displayPhone = (phones, searchText) => {
         phoneCards.appendChild(phoneCard);
     });
 
+    toggleSpinner(false);
+
 }
 
 const handleSearch = () => {
@@ -45,6 +47,16 @@ const handleSearch = () => {
     const searchText = searchInput.value;
 
     loadPhone(searchText)
+    toggleSpinner(true)
+}
+
+const toggleSpinner = (isToggle) => {
+    const loadingSpinner = document.getElementById('loading-spinner');
+    if (isToggle) {
+        loadingSpinner.classList.remove('hidden');
+    } else {
+        loadingSpinner.classList.add('hidden');
+    }
 }
 
 // loadPhone();
